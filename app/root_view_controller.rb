@@ -1,3 +1,9 @@
+class DummySPViewController <  SPViewController
+  private
+    def dummy
+      startWithRoot(nil)
+    end
+end
 class RootViewController < UIViewController
   attr_reader :window, :sparrowView
   def initWithViewBounds(bounds, stageSize:st_size, supportHighResolutions:sup_hd, contentScaleFactor:scale, multipleTouchEnabled:multitouch, frameRate:rate)
@@ -25,32 +31,35 @@ class RootViewController < UIViewController
     self.view = @window
     
     # init sparrow view
-    @sparrowView = SPView.alloc.initWithFrame(@view_bounds).tap do |sv|
-      sv.setMultipleTouchEnabled(@multiple_touch_enabled)
-      sv.setFrameRate(@frame_rate)
+    @sparrowView =SPViewController.alloc.init.tap do |sv| #WithFrame(@view_bounds).tap do |sv|
+      sv.multitouchEnabled =  @multiple_touch_enabled
+      sv.preferredFramesPerSecond = @frame_rate
     end
-    @window.addSubview(@sparrowView)
+    #@window.addSubview(@sparrowView)
     
     # init stage environment
-    SPStage.setSupportHighResolutions(@support_high_resolutions)
+    #SPStage.setSupportHighResolutions(@support_high_resolutions)
     
     # create sparrow stage
-    sparrow_stage = SPStage.alloc.initWithWidth(@stage_size.width, height:@stage_size.height)
-    @sparrowView.setStage(sparrow_stage)
+    #sparrow_stage = SPStage.alloc.initWithWidth(@stage_size.width, height:@stage_size.height)
+    sparrow_stage = nil
+    #@sparrowView.setStage(sparrow_stage)
+    @sparrowView.startWithRoot(Game, suppHighResolutions:@support_high_resolutions, doubleOnPad: true)
     
     # let the app hook itself into the stage
     handler.call(sparrow_stage, nil) if handler
     
     # gentlemen, start your engines
-    @window.rootViewController = UIViewController.alloc.init
+    #@window.rootViewController = UIViewController.alloc.init
+    @window.rootViewController = @sparrowView
     @window.makeKeyAndVisible
-    @window.bringSubviewToFront(@sparrowView)
-    @sparrowView.start
+    #@window.bringSubviewToFront(@sparrowView)
+    #@sparrowView.start
     
     # print some info about the current setup
   	NSLog("Setup: Window size is width=%@, height=%@.", @window.frame.size.width, @window.frame.size.height)
-  	NSLog("Setup: Sparrow view size is width=%@, height=%@.", @sparrowView.frame.size.width, @sparrowView.frame.size.height)
-  	NSLog("Setup: Sparrow stage size is width=%@, height=%@.", sparrow_stage.width, sparrow_stage.height)
+  	#NSLog("Setup: Sparrow view size is width=%@, height=%@.", @sparrowView.frame.size.width, @sparrowView.frame.size.height)
+  	#NSLog("Setup: Sparrow stage size is width=%@, height=%@.", sparrow_stage.width, sparrow_stage.height)
   	NSLog("Setup: Sparrow content scale factor is %@.", @content_scale_factor)
   	NSLog("Setup: Sparrow framerate is %@.", @frame_rate)
   	NSLog("Setup: Sparrow support for high resolutions is set to %@.", @support_high_resolutions ? "YES" : "NO")

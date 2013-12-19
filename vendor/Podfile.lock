@@ -1,11 +1,12 @@
-
 PODS:
-- Sparrow-Framework (1.4)
+  - Sparrow-Framework (2.0.1):
+    - Sparrow-Framework/no-arc
+  - Sparrow-Framework/no-arc (2.0.1)
 
 DEPENDENCIES:
-- Sparrow-Framework
+  - Sparrow-Framework
 
 SPEC CHECKSUMS:
-  Sparrow-Framework: 4db9face42f2c1f62d27b156bfdefa126d149b53
+  Sparrow-Framework: 93fee397aa71f1f23919add903ade24bdf1354ab
 
-COCOAPODS: 0.16.0
+COCOAPODS: 0.28.0

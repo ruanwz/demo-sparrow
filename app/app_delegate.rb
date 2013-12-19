@@ -46,11 +46,11 @@ class AppDelegate
     @mRootViewController.setupStageWithCompletionHandler do |stage, error|
       # Create the game class, rotate it to landscape mode
       # and add it to the stage.
-       Game.alloc.init.tap do |game|
-         game.rotation = Math::PI / 2
-         game.x = stage.width
-         stage.addChild(game)
-      end
+      #Game.alloc.init.tap do |game|
+      #   game.rotation = Math::PI / 2
+      #   #game.x = stage.width
+      #   #stage.addChild(game)
+      #end
     end
     #SP_RELEASE_POOL(pool)
     true

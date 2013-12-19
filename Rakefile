@@ -22,4 +22,6 @@ Motion::Project::App.setup do |app|
   app.pods do
     pod "Sparrow-Framework"
   end
+
+  app.deployment_target = "6.0" 
 end

@@ -92,7 +92,8 @@ class Game < SPSprite
           tween.animateProperty('y', targetValue:yolk.y + yolk.height)
           tween.animateProperty('height', targetValue:2*yolk.height)
           tween.animateProperty('alpha', targetValue:0)
-    			self.stage.juggler.addObject(tween)
+    			Sparrow.juggler.addObject(tween)
+    			#self.stage.juggler.addObject(tween)
         end
         self.removeChild(egg)
         @eggs.removeObject(egg)

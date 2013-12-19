@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 $:.unshift("/Library/RubyMotion/lib")
-# -*- coding: utf-8 -*-
-$:.unshift("/Library/RubyMotion/lib")
 require 'rubygems'
 require 'motion/project/template/ios'
 require 'bundler'
